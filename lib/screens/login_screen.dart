@@ -1,107 +1,132 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 
-class AuthService {
-  static const String loginEndpoint = 'https://your-backend.com/login';
+void main() {
+  runApp(LoginApp());
+}
 
-  Future<bool> login(String phone, String password) async {
-    try {
-      final dio = Dio();
-      final response = await dio.post(loginEndpoint, data: {
-        'phone': phone,
-        'password': password,
-      });
+class LoginApp extends StatefulWidget {
+  @override
+  State<LoginApp> createState() => _LoginAppState();
+}
 
-      if (response.statusCode == 200) {
-        // Login successful
-        return true;
-      } else {
-        // Login failed
-        return false;
-      }
-    } catch (e) {
-      // Error occurred during login
-      return false;
-    }
+class _LoginAppState extends State<LoginApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
+    );
   }
 }
 
-class LoginScreen extends StatelessWidget {
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final AuthService authService = AuthService();
+class LoginScreen extends StatefulWidget {
+  LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextFormField(
-                controller: phoneController,
-                keyboardType: TextInputType.phone,
-                decoration: InputDecoration(
-                  labelText: 'رقم الهاتف',
-                  prefixIcon: Icon(Icons.phone),
-                ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 50,),
+            Text(
+              'تسجيل الدخول',
+              style: TextStyle(
+                color: Color(0xFF0C2461),
+                fontFamily: 'Cairo',
+                fontSize: 24,
               ),
-              SizedBox(height: 16),
-              TextFormField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'كلمة المرور',
-                  labelStyle: TextStyle(
-                    fontFamily: 'Cairo',
+            ),
+            Container(
+              child: Image.asset(
+                'images/logo-png 3.png',
+                width: 500,
+                height: 225,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: 'مثال: 07503139650',
+                      prefixIcon: Icon(Icons.phone),
+                    ),
                   ),
-                  prefixIcon: Icon(Icons.lock),
-                ),
-              ),
-              SizedBox(height: 16),
-              GestureDetector(
-                onTap: () {
-                  // Handle "Forgot Password" action
-                },
-                child: Text(
-                  'نسيت كلمة السر؟',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
-                    fontFamily: 'Cario',
+                  SizedBox(height: 16.0),
+                  TextFormField(
+                    obscureText: !_isPasswordVisible,
+                    decoration: InputDecoration(
+                      labelText: 'كلمة المرور',
+                      prefixIcon: IconButton(
+                        icon: Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(height: 10),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'هل نسيت كلمة المرور؟',
+                      style: TextStyle(
+                        color: Color(0xFF0C2461),
+                        fontFamily: 'Cario',
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  Container(
+                    width: 300,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        // TODO: Implement login functionality
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(13),
+                        ), backgroundColor: const Color(0xFF00926E),),
+                      child: Text(
+                        'تسجيل الدخول',
+                        style: TextStyle(
+                          fontFamily: 'Cairo',
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 150.0),
+                  GestureDetector(
+                    onTap: () {
+                      // TODO: Implement create account functionality
+                    },
+                    child: Text(
+                      'انشاء حساب',
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () async {
-                  final phone = phoneController.text;
-                  final password = passwordController.text;
-
-                  // Call the login function
-                  final loggedIn = await authService.login(phone, password);
-
-                  if (loggedIn) {
-                    // Handle successful login
-                    // Navigate to the next screen, show a success message, etc.
-                  } else {
-                    // Handle failed login
-                    // Show an error message, clear the fields, etc.
-                  }
-                },
-                child: const Text('تسجيل الدخول',
-                  style: TextStyle(
-                  fontFamily: 'Cairo',
-                ),),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-
