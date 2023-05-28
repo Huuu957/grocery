@@ -87,7 +87,7 @@ class _OnbordingState extends State<Onbording> {
                 backgroundColor: Colors.green,
               ),
               child: Text(
-                  currentIndex == contents.length - 1 ? "Continue" : "Next"),
+                  currentIndex == contents.length - 1 ? "ابدأ الأن" : "التالي"),
               onPressed: () {
                 if (currentIndex == contents.length - 1) {
                   Navigator.pushReplacement(

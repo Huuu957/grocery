@@ -48,7 +48,7 @@ class _LocationScreenState extends State<LocationAccessScreen> {
     // Replace the code below with your desired navigation logic.
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => NextScreen()),
+      MaterialPageRoute(builder: (context) => LoginScreen()),
     );
   }
 
