@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:grocery1/models/content_model.dart';
+import 'package:grocery1/models/onboarding_content_model.dart';
 import 'package:grocery1/main.dart';
 
 class Onbording extends StatefulWidget {
@@ -74,7 +74,7 @@ class _OnbordingState extends State<Onbording> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(
                 contents.length,
-                    (index) => buildDot(index, context),
+                (index) => buildDot(index, context),
               ),
             ),
           ),
@@ -83,6 +83,9 @@ class _OnbordingState extends State<Onbording> {
             margin: EdgeInsets.all(40),
             width: double.infinity,
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+              ),
               child: Text(
                   currentIndex == contents.length - 1 ? "Continue" : "Next"),
               onPressed: () {
