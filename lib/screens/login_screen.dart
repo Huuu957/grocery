@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery1/style/colors.dart';
 
 void main() {
   runApp(LoginApp());
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Text(
               'تسجيل الدخول',
               style: TextStyle(
-                color: Color(0xFF0C2461),
+                color: bluePrimary,
                 fontFamily: 'Cairo',
                 fontSize: 24,
               ),
@@ -83,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       'هل نسيت كلمة المرور؟',
                       style: TextStyle(
-                        color: Color(0xFF0C2461),
+                        color: bluePrimary,
                         fontFamily: 'Cario',
                       ),
                       textAlign: TextAlign.left,
@@ -103,23 +104,34 @@ class _LoginScreenState extends State<LoginScreen> {
                         ), backgroundColor: const Color(0xFF00926E),),
                       child: Text(
                         'تسجيل الدخول',
-                        style: TextStyle(
-                          fontFamily: 'Cairo',
-                        ),
                       ),
                     ),
                   ),
                   SizedBox(height: 150.0),
-                  GestureDetector(
-                    onTap: () {
-                      // TODO: Implement create account functionality
-                    },
-                    child: Text(
-                      'انشاء حساب',
-                      style: TextStyle(
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                       GestureDetector(
+                         onTap: () {
+                           // TODO: Implement create account functionality
+                         },
+                         child: Text(
+                           'انشئ حسابك الأن',
+                           style: TextStyle(
+                             fontFamily: 'Cairo',
+                             decoration: TextDecoration.underline,
+                             color: bluePrimary,
+                           ),
+                         ),
+                       ),
+                       Text(
+                         'هل انت مستخدم جديد؟',
+                         style: TextStyle(
+                           fontFamily: 'Cairo',
+                           color: Colors.grey,
+                         ),
+                       ),
+                     ],
                   ),
                 ],
               ),
