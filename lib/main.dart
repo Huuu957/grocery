@@ -4,7 +4,7 @@ import 'screens/loader_screen.dart';
 import 'screens/location_access_screen.dart';
 import 'screens/login_screen.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,13 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Deom',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Colors.green,
         fontFamily: 'Cairo',
       ),
-      home: LoginApp(),
+      home: LoginScreen(),
     );
   }
 }

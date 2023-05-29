@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:grocery1/models/onboarding_content_model.dart';
 import 'package:grocery1/main.dart';
+import 'package:grocery1/constant/constant.dart';
 
 class Onbording extends StatefulWidget {
   @override

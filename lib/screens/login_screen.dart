@@ -1,24 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grocery1/style/colors.dart';
-
-void main() {
-  runApp(LoginApp());
-}
-
-class LoginApp extends StatefulWidget {
-  @override
-  State<LoginApp> createState() => _LoginAppState();
-}
-
-class _LoginAppState extends State<LoginApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-    );
-  }
-}
+import 'package:grocery1/constant/constant.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -36,14 +17,12 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 50,),
+            SizedBox(
+              height: 50,
+            ),
             Text(
               'تسجيل الدخول',
-              style: TextStyle(
-                color: bluePrimary,
-                fontFamily: 'Cairo',
-                fontSize: 24,
-              ),
+              style: getTextStyleWithSizeAndColor(24, bluePrimary),
             ),
             Container(
               child: Image.asset(
@@ -57,40 +36,80 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'مثال: 07503139650',
-                      prefixIcon: Icon(Icons.phone),
+                  Text(
+                    'رقم الهاتف',
+                    style: getTextStyleWithSizeAndColor(16, bluePrimary),
+                  ),
+                  Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        labelText: 'مثال: 07503139650',
+                        prefixIcon: Icon(
+                          Icons.phone,
+                          color: bluePrimary,
+                        ),
+                        alignLabelWithHint:
+                            true, // Aligns the label with the input text
+                      ),
                     ),
                   ),
-                  SizedBox(height: 16.0),
-                  TextFormField(
-                    obscureText: !_isPasswordVisible,
-                    decoration: InputDecoration(
-                      labelText: 'كلمة المرور',
-                      prefixIcon: IconButton(
-                        icon: Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility),
-                        onPressed: () {
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    'كلمة المرور',
+                    style: getTextStyleWithSizeAndColor(16, bluePrimary),
+                  ),
+                  Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: TextFormField(
+                        obscureText: !_isPasswordVisible,
+                        onChanged: (value) {
                           setState(() {
-                            _isPasswordVisible = !_isPasswordVisible;
+                            _isPasswordVisible = value.isNotEmpty;
                           });
                         },
-                      ),
-                    ),
-                  ),
+                        decoration: InputDecoration(
+                          labelText: 'كلمة المرور',
+                          prefixIcon: IconButton(
+                            icon: Icon(
+                              _isPasswordVisible
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
+                              color:
+                                  bluePrimary, // Set the desired color for the icon
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _isPasswordVisible = !_isPasswordVisible;
+                              });
+                            },
+                          ),
+                        ),
+                      )),
                   SizedBox(height: 10),
                   Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'هل نسيت كلمة المرور؟',
-                      style: TextStyle(
-                        color: bluePrimary,
-                        fontFamily: 'Cario',
-                      ),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                  SizedBox(height: 30),
+                      alignment: Alignment.centerLeft,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          //TODO: Implement forgot password functionality
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              Colors.transparent, // Make the button transparent
+                          shadowColor: Colors.transparent, // Remove shadow
+                        ),
+                        child: Text(
+                          'هل نسيت كلمة المرور؟',
+                          style: TextStyle(
+                            color: bluePrimary,
+                            fontFamily: 'Cario',
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                      )),
+                  SizedBox(height: 10),
                   Container(
                     width: 300,
                     height: 50,
@@ -101,37 +120,39 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(13),
-                        ), backgroundColor: const Color(0xFF00926E),),
+                        ),
+                        backgroundColor: const Color(0xFF00926E),
+                      ),
                       child: Text(
                         'تسجيل الدخول',
                       ),
                     ),
                   ),
-                  SizedBox(height: 150.0),
+                  const SizedBox(height: 50.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                     children: [
-                       GestureDetector(
-                         onTap: () {
-                           // TODO: Implement create account functionality
-                         },
-                         child: Text(
-                           'انشئ حسابك الأن',
-                           style: TextStyle(
-                             fontFamily: 'Cairo',
-                             decoration: TextDecoration.underline,
-                             color: bluePrimary,
-                           ),
-                         ),
-                       ),
-                       Text(
-                         'هل انت مستخدم جديد؟',
-                         style: TextStyle(
-                           fontFamily: 'Cairo',
-                           color: Colors.grey,
-                         ),
-                       ),
-                     ],
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          // TODO: Implement create account functionality
+                        },
+                        child: Text(
+                          'انشئ حسابك الأن',
+                          style: TextStyle(
+                            fontFamily: 'Cairo',
+                            decoration: TextDecoration.underline,
+                            color: bluePrimary,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'هل انت مستخدم جديد؟',
+                        style: TextStyle(
+                          fontFamily: 'Cairo',
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
