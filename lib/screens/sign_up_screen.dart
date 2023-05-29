@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:grocery1/constant/constant.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  bool _isPasswordVisible = false;
-
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
             ),
             Text(
-              'تسجيل الدخول',
+              'انشاء الحساب',
               style: getTextStyle(24, bluePrimary),
             ),
             Image.asset(
@@ -44,7 +42,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: getTextStyle(16, bluePrimary),
                         ),
                       ),
-                      const SizedBox(height: 60),
                     ],
                   ),
                   Directionality(
@@ -52,10 +49,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText: 'مثال: 07503139650',
-                        prefixIcon: Icon(
-                          Icons.phone,
-                          color: bluePrimary,
-                        ),
                         alignLabelWithHint: true,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
@@ -64,47 +57,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 20.0),
                         child: Text(
-                          'كلمة المرور',
+                          'الاسم',
                           style: getTextStyle(16, bluePrimary),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 15),
                   Directionality(
                     textDirection: TextDirection.rtl,
                     child: TextFormField(
-                      obscureText: !_isPasswordVisible,
-                      onChanged: (value) {
-                        setState(() {
-                          _isPasswordVisible = value.isNotEmpty;
-                        });
-                      },
                       decoration: InputDecoration(
-                        labelText: 'كلمة المرور',
-                        prefixIcon: IconButton(
-                          icon: Icon(
-                            _isPasswordVisible
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color:
-                                bluePrimary, // Set the desired color for the icon
-                          ),
-                          onPressed: () {
-                            setState(() {
-                              _isPasswordVisible = !_isPasswordVisible;
-                            });
-                          },
-                        ),
+                        labelText: 'مثال: أحمد',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(
                               20.0), // Adjust the border radius as needed

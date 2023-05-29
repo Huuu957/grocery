@@ -8,10 +8,10 @@ const TextStyle myTextStyle = TextStyle(
   color: Colors.grey,
 );
 
-TextStyle getTextStyleWithSizeAndColor(double fontSize, Color color) {
-  return myTextStyle.copyWith(fontSize: fontSize, color: color);
-}
-
-TextStyle getTextStyleWithSizeAndPrimary(double fontSize, Color primaryColor) {
-  return myTextStyle.copyWith(fontSize: fontSize, color: primaryColor);
+TextStyle getTextStyle(double fontSize, Color primaryColor) {
+  return myTextStyle.copyWith(
+    fontSize: fontSize,
+    color: primaryColor,
+    fontWeight: FontWeight.bold,
+  );
 }

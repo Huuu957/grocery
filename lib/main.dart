@@ -3,6 +3,7 @@ import 'screens/onboarding_screen.dart';
 import 'screens/loader_screen.dart';
 import 'screens/location_access_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/sign_up_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.green,
         fontFamily: 'Cairo',
       ),
-      home: LoginScreen(),
+      home: SignUpScreen(),
     );
   }
 }
