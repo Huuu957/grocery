@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery1/constant/constant.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -17,28 +17,34 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Text(
               'تسجيل الدخول',
               style: getTextStyleWithSizeAndColor(24, bluePrimary),
             ),
-            Container(
-              child: Image.asset(
-                'images/logo-png 3.png',
-                width: 500,
-                height: 225,
-              ),
+            Image.asset(
+              'images/logo-png 3.png',
+              width: 500,
+              height: 225,
             ),
             Container(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'رقم الهاتف',
-                    style: getTextStyleWithSizeAndColor(16, bluePrimary),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Text(
+                          'رقم الهاتف',
+                          style: getTextStyleWithSizeAndColor(16, bluePrimary),
+                        ),
+                      ),
+                    ],
                   ),
                   Directionality(
                     textDirection: TextDirection.rtl,
@@ -54,12 +60,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    'كلمة المرور',
-                    style: getTextStyleWithSizeAndColor(16, bluePrimary),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Text(
+                          'رقم الهاتف',
+                          style: getTextStyleWithSizeAndColor(16, bluePrimary),
+                        ),
+                      ),
+                    ],
                   ),
                   Directionality(
                       textDirection: TextDirection.rtl,
@@ -88,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       )),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Container(
                       alignment: Alignment.centerLeft,
                       child: ElevatedButton(
@@ -109,8 +123,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           textAlign: TextAlign.left,
                         ),
                       )),
-                  SizedBox(height: 10),
-                  Container(
+                  const SizedBox(height: 10),
+                  SizedBox(
                     width: 300,
                     height: 50,
                     child: ElevatedButton(
@@ -123,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         backgroundColor: const Color(0xFF00926E),
                       ),
-                      child: Text(
+                      child: const Text(
                         'تسجيل الدخول',
                       ),
                     ),
@@ -145,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      Text(
+                      const Text(
                         'هل انت مستخدم جديد؟',
                         style: TextStyle(
                           fontFamily: 'Cairo',
