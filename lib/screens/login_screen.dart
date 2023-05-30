@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           // TODO: Implement create account functionality
                         },
                         child: Text(
-                          'انشئ حسابك الأن',
+                          'انشاء حسابك الأن',
                           style: TextStyle(
                             fontFamily: 'Cairo',
                             decoration: TextDecoration.underline,
